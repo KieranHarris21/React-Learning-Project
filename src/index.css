@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  :root {
+    --color-text-base: #ffffff;
+    --color-text-muted: #dddddd;
+    --color-text-inverted: #000000;
+
+    --color-contentbg: #313338;
+
+    --color-secondsidebarbg: #2b2d31;
+    --color-secondsidebarline: #232428;
+    --color-secondsidebarhover: #e0e1e5;
+    
+    --color-sidebarbg: #1e1f22;
+    --color-tooltipbg: #111214;
+
+    --color-scrollbarbg: #1e1f22;
+    --color-scrollbartrackbg: #2b2d31;
+
+    --color-accent: #16a34a;
+    
+  }
+
+  .theme-red {
+    --color-accent: #a31616;
+    --color-text-onaccent: #ffffff;
+  }
+
+  .theme-green {
+    --color-accent: #16a34a;
+    --color-text-onaccent: #ffffff;
+  }
+
+  .theme-blue {
+    --color-accent: #5865f2;
+    --color-text-onaccent: #ffffff;
+  }
+
+  .theme-dark {
+    --color-text-base: #ffffff;
+    --color-text-muted: #dddddd;
+
+    --color-contentbg: #313338;
+    
+    --color-secondsidebarbg: #2b2d31;
+    --color-secondsidebarline: #232428;
+    --color-secondsidebarhover: #36373d;
+    --color-secondsidebarselected: #404249;
+    
+    --color-sidebarbg: #1e1f22;
+    --color-sidebarselected: #060607;
+    --color-tooltipbg: #111214;
+    
+    --color-scrollbarbg: #1e1f22;
+    --color-scrollbartrackbg: #2b2d31;
+  }
+
+  .theme-light {
+    --color-text-base: #000000;
+    --color-text-muted: #2c2c2c;
+
+    --color-contentbg: #ffffff;
+    
+    --color-secondsidebarbg: #f2f3f5;
+    --color-secondsidebarline: #ebedef;
+    --color-secondsidebarhover: #e0e1e5;
+    --color-secondsidebarselected: #d2d4d8;
+    
+    --color-sidebarbg: #e3e5e8;
+    --color-sidebarselected: #060607;
+    --color-tooltipbg: #ffffff;
+    
+    --color-scrollbarbg: #c4c9ce;
+    --color-scrollbartrackbg: #ebedef;
+  }
+
+
+}
+
+@layer components {
+
+  .sidebar-icon {
+    @apply relative flex items-center justify-center 
+           h-12 w-12 my-2 mx-auto shadow-lg 
+           bg-skin-contentbg text-skin-accent
+           hover:bg-skin-accent hover:text-white
+           rounded-3xl hover:rounded-xl
+           transition-all;
+  }
+
+  .selected-sidebar-icon {
+    @apply relative flex items-center justify-center 
+           h-12 w-12 my-2 mx-auto shadow-lg 
+           bg-skin-accent text-white
+           rounded-xl
+           transition-all;
+  }
+
+  .sidebar-tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max left-16
+           rounded-md shadow-md
+            bg-skin-tooltipbg
+           text-xs text-skin-base font-bold
+           transition-all duration-100 scale-0 origin-left;
+  }
+
+}
