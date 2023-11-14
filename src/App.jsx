@@ -4,11 +4,11 @@ import { useState } from "react"
 import Sidebar from "./components/Sidebar"
 import SecondarySidebar from "./components/SecondarySidebar"
 // page/content imports
-import Home from "./home/Home"
-import About from "./about/About"
-import Experience from "./experience/Experience"
-import Projects from "./projects/Projects"
-import Settings from "./settings/Settings"
+import Home from "./home-page/Home"
+import About from "./about-page/About"
+import Experience from "./experience-page/Experience"
+import Projects from "./projects-page/Projects"
+import Settings from "./settings-page/Settings"
 import AddContent from "./lib/admin/AddContent"
 
 // auth modals TODO: finish Auth
