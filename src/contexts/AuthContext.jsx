@@ -1,38 +1,57 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
+import { createContext, useEffect, useState } from 'react'
+import { auth } from "../firebase"
 // import { auth } from '../firebase/auth'
 
-const AuthContext = React.createContext()
-
-// eslint-disable-next-line react-refresh/only-export-components
-export function useAuth() {
-  return useContext(AuthContext)
-}
+export const Context = createContext()
 
 // eslint-disable-next-line react/prop-types
-export function AuthProvider({ children }) {
-  const [current_user, setCurrentUser] = useState()
+export const AuthContext = ({ children }) => {
 
-  function signup(email, password) {
-    // return auth.createUserWithEmailAndPassword(email, password)
-  }
+  const auth = getAuth()
+
+  const [authUser, setAuthUser] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // const unsubscribe = auth.onAuthStateChanged(user => {
-    //   setCurrentUser(user)
-    // })
+    let unsubscribe
+    unsubscribe = onAuthStateChanged(auth, (user) => {
+      setLoading(false)
+      if (user) {
+        setAuthUser(user)
+      } else {
+        setAuthUser(null)
+      }
 
-    // return unsubscribe
+      return () => {
+        if (unsubscribe) {
+          unsubscribe()
+        }
+      }
+    })
   }, [])
-  
 
-  const value = {
-    current_user,
-    signup
+  const userSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("user signed out")
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
+  const values = {
+    authUser,
+    setAuthUser,
+    userSignOut
+  }
+
+  console.log("AuthProvider", authUser)
+
   return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
+    <Context.Provider value={values}>
+      {!loading && children}
+    </Context.Provider>
   )
 }
