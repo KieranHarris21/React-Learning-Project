@@ -1,4 +1,4 @@
-# React + Vite
+# React Learning Project
 
 React Project for learning how react works and playing around with it to see what I can do with it.
 
