@@ -2,7 +2,6 @@ import { Outlet } from "react-router"
 import Sidebar from "./nav/Sidebar"
 import { useContext } from "react"
 import { ThemeContext } from "../../contexts/ThemeContext"
-import { HiLogout } from "react-icons/hi"
 
 const Layout = () => {
 
